@@ -24,10 +24,12 @@
 
     <div class="container mt-5">
       <h1>News</h1>
-      <form action="/news">
-        <input type="text" name="q">
-        <button type="submit">Go there</submit>
-      </form>
+      <ul>
+        <% for item in @news["articles"] %>
+        <li><%= item["title"] %></li>
+        <ul><li><a href=<%= item["url"] %>>Link</a></li></ul>
+        <% end %>
+        </ul>
     </div>
 
     <!-- Optional JavaScript -->
