@@ -1,0 +1,20 @@
+.newsheader{
+    padding: 10px;
+    font-size: 3vw;
+}
+.newsimg{
+    width: 65vw;
+    padding: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.newsitem{
+    padding: 5px;
+}
+.newsdesc{
+    font-size: 2.2vw;
+}
+.minitext{
+    padding-top:5px;
+    font-size: 1.7vw;
+}
