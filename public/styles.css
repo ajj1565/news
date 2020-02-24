@@ -56,3 +56,18 @@
 .navhead{
     color: whitesmoke;
 }
+.headers{
+    font-size: 4.5vw;
+
+    text-shadow: 1.5px 1.5px 1.5px gray;
+}
+.weatherhead{
+    font-size: 2.7vw;
+}
+.currtext{
+    font-size: 2vw;
+}
+.foretext{
+    font-size: 1.75vw;
+    padding: 0px;
+}
