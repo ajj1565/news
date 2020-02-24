@@ -25,31 +25,88 @@
     <div class="container mt-5">
       <h1>Weather</h1>
         <div class="container mt5">
-            <p><%=IF @forecast["currently"]["icon"]== "clear-day" %>
-                    <i class="fas fa-sun"></i>
-                <%=ELSIF @forecast["currently"]["icon"]== "clear-night" %>
-                    <i class="fas fa-moon"></i>
-                <%=ELSIF @forecast["currently"]["icon"]== "partly-cloudy-day" %>
-                    <i class="fas fa-cloud-sun"></i>
-                <%=ELSIF @forecast["currently"]["icon"]== "partly-cloudy-night" %>
-                    <i class="fas fa-cloud-night"></i>
-                <%=ELSIF @forecast["currently"]["icon"]== "cloudy" %>
-                    <i class="fas fa-cloud"></i>
-                <%=ELSIF @forecast["currently"]["icon"]== "rain" %>
-                    <i class="fas fa-cloud-rain"></i>
-                <%=ELSIF @forecast["currently"]["icon"]== "sleet" %>
-                    <i class="fas fa-cloud-sleet"></i>
-                <%=ELSIF @forecast["currently"]["icon"]== "snow" %>
-                    <i class="fas fa-cloud-snow"></i>
-                <%=ELSIF @forecast["currently"]["icon"]== "wind" %>
-                    <i class="fas fa-wind"></i>
-                <%=ELSIF @forecast["currently"]["icon"]== "fog" %>
-                    <i class="fal fa-fog"></i>
-                <%=ELSE %>
-                    img not found
-                <%=END%>
-            </p>
+        <h3 class="weatherhead">Current Conditions:</h3>  
+            <div class="row">
+                <div class="col-sm">
+                    <div class="card"> 
+                        <div class="card-body">
+                            <p>  
+                            <% if @forecast["currently"]["icon"] == "clear-day" %>
+                                <i class="fas fa-sun"></i>
+                            <% elsif @forecast["currently"]["icon"] == "clear-night" %>
+                                <i class="fas fa-moon"></i>
+                            <% elsif @forecast["currently"]["icon"] == "partly-cloudy-day" %>
+                                <i class="fas fa-cloud-sun"></i>
+                            <% elsif @forecast["currently"]["icon"] == "partly-cloudy-night" %>
+                                <i class="fas fa-cloud-night"></i>
+                            <% elsif @forecast["currently"]["icon"] == "cloudy" %>
+                                <i class="fas fa-cloud"></i>
+                            <% elsif @forecast["currently"]["icon"] == "rain" %>
+                                <i class="fas fa-cloud-rain"></i>
+                            <% elsif @forecast["currently"]["icon"] == "sleet" %>
+                                <i class="fas fa-cloud-sleet"></i>
+                            <% elsif @forecast["currently"]["icon"] == "snow" %>
+                                <i class="fas fa-snowflake"></i>
+                            <% elsif @forecast["currently"]["icon"] == "wind" %>
+                                <i class="fas fa-wind"></i>
+                            <% elsif @forecast["currently"]["icon"] == "fog" %>
+                                <i class="fal fa-fog"></i>
+                            <% else %>
+                                img not found
+                            <% end %>
+                            </p>
+                            <h5>Temperature: <%= @forecast["currently"]["temperature"] %> degrees</h5>
+                            <h5>Conditions: <%= @forecast["currently"]["summary"] %></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row gap">
+            </div>
+            <h3 class="weatherhead">7-Day Forecast:</h3>
+            <div class="row">
+                <% count = 1 %>
+                <% for each in @forecast["daily"]["data"] %>
+                    <% if count > 7 %>
+                        <% break %>
+                    <% end %>
+                    <div class="col-sm">
+                        <div class="card Forecast">
+                            <div class="card-body">
+                                <% if each["icon"] == "clear-day" %>
+                                    <p><i class="fas fa-sun"></i></p>
+                                <% elsif each["icon"] == "clear-night" %>
+                                    <p><i class="fas fa-moon"></i></p>
+                                <% elsif each["icon"] == "partly-cloudy-day" %>
+                                    <p><i class="fas fa-cloud-sun"></i></p>
+                                <% elsif each["icon"] == "partly-cloudy-night" %>
+                                    <p><i class="fas fa-cloud-night"></i></p>
+                                <% elsif each["icon"] == "cloudy" %>
+                                    <p><i class="fas fa-cloud"></i></p>
+                                <% elsif each["icon"] == "rain" %>
+                                    <p><i class="fas fa-cloud-rain"></i></p>
+                                <% elsif each["icon"] == "sleet" %>
+                                    <p><i class="fas fa-cloud-sleet"></i></p>
+                                <% elsif each["icon"] == "snow" %>
+                                    <p><i class="fas fa-snowflake"></i></p>
+                                <% elsif each["icon"] == "wind" %>
+                                    <p><i class="fas fa-wind"></i></p>
+                                <% elsif each["icon"] == "fog" %>
+                                    <p><i class="fal fa-fog"></i></p>
+                                <% else %>
+                                    img not found
+                                <% end %>
+                                <p>High: <%=each["temperatureHigh"]%></p>
+                                <p>Low: <%=each["temperatureLow"]%></p>
+                            </div>
+                        </div>
+                    </div>
+                    <% count = count + 1 %>
+                <% end %>
+            </div>
         </div>
+    </div>
+    <div class="container mt-5">
       <h1>News</h1>
         <div class="list-group">
             <% for item in @news["articles"] %>
