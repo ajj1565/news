@@ -14,7 +14,9 @@ ForecastIO.api_key = "2032ae6f9df85d324aa2fd4f3020b8dd"
 # news is now a Hash you can pretty print (pp) and parse for your output
 
 get "/" do
-  view "ask"
+    url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=76c50ac18f0b45bf9ed0df5f6787c5ae"
+    @news = HTTParty.get(url).parsed_response.to_hash
+    view "ask"
 end
 
 get "/news" do
