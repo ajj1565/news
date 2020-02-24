@@ -72,6 +72,9 @@
                     <% end %>
                     <div class="col-sm">
                         <div class="card Forecast">
+                            <div class="card-title">
+                                <h5><%=Time.at(each["time"]).strftime("%A")[0,3] %></h5>
+                            </div>
                             <div class="card-body">
                                 <% if each["icon"] == "clear-day" %>
                                     <p><i class="fas fa-sun"></i></p>
