@@ -35,3 +35,24 @@
 .card{
     text-align: center;
 }
+.fa-sun{
+    color: gold;
+}
+.fa-moon{
+    color: darkslateblue;
+}
+.fa-cloud-sun, .fa-cloud-night, .fa-cloud{
+    color: darkslategray;
+}
+.fa-cloud-rain{
+    color: rgb(0, 0, 206);
+}
+.fa-snowflake{
+    color: rgb(0, 216, 216)
+}
+.fa-wind, .fa-fog{
+    color:darkgrey
+}
+.navhead{
+    color: whitesmoke;
+}

@@ -20,6 +20,8 @@ end
 get "/news" do
     results = Geocoder.search(params["q"])
     lat_long = results.first.coordinates # => [lat, long]
+    address = results.first.address
+    @cityname = address.split(",")[0]
     @forecast = ForecastIO.forecast(lat_long[0],lat_long[1]).to_hash
     url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=76c50ac18f0b45bf9ed0df5f6787c5ae"
     @news = HTTParty.get(url).parsed_response.to_hash
